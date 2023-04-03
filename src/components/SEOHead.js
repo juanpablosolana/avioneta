@@ -2,7 +2,7 @@ import Head from 'next/head'
 function SEOHead ({ title, description, keywords }) {
   return (
     <Head>
-      <title>{title}</title>
+      <title>{`${title} | AVIONETA`}</title>
       <meta name='description' content={description} />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <link rel='icon' href='/favicon.ico' />
