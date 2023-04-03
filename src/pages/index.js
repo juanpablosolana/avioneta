@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import SEOHead from '@/components/SEOHead'
+import Header from '@/components/Header'
 
 export default function Home () {
   return (
@@ -9,7 +10,7 @@ export default function Home () {
         description='Descubre nuestra suscripción mensual para aprender a moderar tu consumo de alcohol o a sacarlo por completo de tu vida.'
         keywords='Avioneta, Alcohol, Rehabilitación'
       />
-
+      <Header />
       <main className='bg-slate-900 text-white'>
         <div className='container mx-auto px-4'>
           <div className='flex flex-col items-center justify-center min-h-screen bg-slate-200'>
