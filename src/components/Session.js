@@ -14,9 +14,7 @@ function Signin () {
 }
 
 function Signout () {
-  const { data: session, status } = useSession()
-
-  console.log(session, status)
+  const { data: session } = useSession()
   return (
     <div>
       <li class='py-3 sm:py-4'>
