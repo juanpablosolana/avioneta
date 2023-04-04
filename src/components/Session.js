@@ -15,17 +15,17 @@ function Signin () {
 function Signout () {
   const router = useRouter()
   return (
-    <div>
+    <div className='flex flex-1'>
       <button
         onClick={() => router.push('/profile')}
-        className='px-4 py-2 font-bold text-white bg-gray-800 rounded hover:bg-gray-700'
+        className='w-full px-4 py-2 text-xl font-semibold text-white rounded-lg shadow-lg bg-sky-900'
       >
         Ver perfil
       </button>
 
       <button
         button onClick={() => signOut()}
-        className='px-4 py-2 font-bold text-white bg-gray-800 rounded hover:bg-gray-700'
+        className='w-full px-4 py-2 text-xl font-semibold text-white rounded-lg shadow-lg bg-sky-900'
       >
         Salir
       </button>
