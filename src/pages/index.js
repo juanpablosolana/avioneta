@@ -1,6 +1,7 @@
 import SEOHead from '@/components/SEOHead'
 import Header from '@/components/Header'
 import HomePage from '@/components/HomePage'
+import ProductsCardContainer from '@/components/ProductsCardContainer'
 
 export default function Home () {
   return (
@@ -12,6 +13,7 @@ export default function Home () {
       />
       <Header />
       <HomePage />
+      <ProductsCardContainer />
     </>
   )
 }
