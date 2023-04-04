@@ -17,9 +17,9 @@ function Signout () {
   const { data: session } = useSession()
   return (
     <div>
-      <li class='py-3 sm:py-4'>
-        <div class='flex items-center space-x-4'>
-          <div class='flex-shrink-0'>
+      <li className='py-3 sm:py-4'>
+        <div className='flex items-center space-x-4'>
+          <div className='flex-shrink-0'>
             <Image
               src={session?.user.image}
               alt={session?.user.name}
@@ -28,15 +28,15 @@ function Signout () {
               className='inline w-full rounded-lg margin-auto'
             />
           </div>
-          <div class='flex-1 min-w-0'>
-            <p class='text-sm text-gray-500 truncate dark:text-gray-400'>
+          <div className='flex-1 min-w-0'>
+            <p className='text-sm text-gray-500 truncate dark:text-gray-400'>
               {session?.user.name}
             </p>
-            <p class='text-sm text-gray-500 truncate dark:text-gray-400'>
+            <p className='text-sm text-gray-500 truncate dark:text-gray-400'>
               {session?.user.email}
             </p>
           </div>
-          <div class='inline-flex items-center text-base font-semibold text-gray-900 dark:text-white'>
+          <div className='inline-flex items-center text-base font-semibold text-gray-900 dark:text-white'>
             $320
           </div>
           <Link href='/' onClick={() => signOut()}>
