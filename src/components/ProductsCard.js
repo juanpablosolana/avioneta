@@ -1,7 +1,10 @@
-function ProductCard ({ name, price, psy, setShowModal }) {
+function ProductCard ({ name, price, psy, setShowModal, setProductData }) {
   const handlePay = () => {
+    setProductData({
+      name,
+      price
+    })
     setShowModal(true)
-    console.log('Pagar')
   }
   return (
     <div className='w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
