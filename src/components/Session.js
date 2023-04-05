@@ -20,13 +20,15 @@ function Signout () {
       <li className='py-3 sm:py-4'>
         <div className='flex items-center space-x-4'>
           <div className='flex-shrink-0'>
-            <Image
-              src={session?.user.image}
-              alt={session?.user.name}
-              width={50}
-              height={50}
-              className='inline w-full rounded-lg margin-auto'
-            />
+            <Link href='/dashboard'>
+              <Image
+                src={session?.user.image}
+                alt={session?.user.name}
+                width={50}
+                height={50}
+                className='inline w-full rounded-lg margin-auto'
+              />
+            </Link>
           </div>
           <div className='flex-1 min-w-0'>
             <p className='text-sm text-gray-500 truncate dark:text-gray-400'>

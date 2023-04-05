@@ -1,6 +1,6 @@
 function HomePage () {
   return (
-    <main className='bg-slate-900 text-slate-50 bg-[url("/images/man-using-laptop.jpg")] '>
+    <main className='bg-auto bg-center text-slate-50 bg-[url("/images/man-using-laptop.jpg")] '>
       <div className='bg-black bg-opacity-50'>
         <div className='container px-4 mx-auto '>
           <div className='flex flex-col items-center justify-center min-h-screen'>
