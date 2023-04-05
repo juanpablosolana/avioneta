@@ -1,9 +1,48 @@
-import { CardElement } from '@stripe/react-stripe-js'
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import { useSession } from 'next-auth/react'
+
 function Modal ({ setShowModal, productData }) {
-  console.log(productData)
   const handlePay = () => {
-    console.log('Pagar')
+    fetch('/api/intent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        amount: parseInt(productData.price.replace(',', '')),
+        description: productData.name
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        confirmPayment(data)
+      })
   }
+
+  const stripe = useStripe()
+  const elements = useElements()
+  const { data: session } = useSession()
+
+  const confirmPayment = async (clientSecret) => {
+    const result = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: {
+          name: session.user.name,
+          email: session.user.email
+        }
+      }
+    })
+
+    if (result.error) {
+      console.log(result.error.message)
+    } else {
+      if (result.paymentIntent.status === 'succeeded') {
+        console.log('Pago realizado')
+      }
+    }
+  }
+
   const cardStyle = {
     style: {
       base: {

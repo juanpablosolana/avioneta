@@ -16,7 +16,7 @@ async function handler (req, res) {
       payment_method_types: ['card'],
       description
     })
-    res.status(200).json(paymentIntent)
+    res.status(200).json(paymentIntent.client_secret)
   } catch (error) {
     res.status(500).json({ statusCode: 500, message: error.message })
   }
