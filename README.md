@@ -16,6 +16,7 @@ _Las tecnologías en este proyecto_
 * [Google Cloud Platform](https://cloud.google.com/) - Como proveedor de autenticación
 * [Tailwind](https://tailwindcss.com/) - Usado para generar CSS
 * [Stripe](https://stripe.com/) - La pasarela para los pagos
+* [Stripe-cards](https://stripe.com/docs/testing) - Para generar tarjetas de prueba
 ## Expresiones de Gratitud 🎁
 
 * Comenta a otros sobre este proyecto 📢
