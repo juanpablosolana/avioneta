@@ -3,9 +3,11 @@ import Router from 'next/router'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useSession } from 'next-auth/react'
 import LoadingSpinner from './LoadingSpinner'
+import Success from './Success'
 
 function Modal ({ setShowModal, productData }) {
   const [isLoading, setIsLoading] = useState(false)
+  const [isPaymentSucces, setIsPaymentSucces] = useState(false)
   const handlePay = () => {
     setIsLoading(true)
     fetch('/api/intent', {
@@ -40,9 +42,10 @@ function Modal ({ setShowModal, productData }) {
     })
 
     if (result.error) {
-      console.log(result.error.message)
+      setIsLoading(false)
     } else {
       if (result.paymentIntent.status === 'succeeded') {
+        setIsPaymentSucces(true)
         Router.push('/dashboard')
       }
     }
@@ -69,24 +72,27 @@ function Modal ({ setShowModal, productData }) {
 
   return (
     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm'>
-      <div className='relative flex flex-col p-4 rounded w-96 bg-slate-100'>
-        <div className='flex justify-between'>
-          <h2 className='text-xl font-bold'> {productData.name} </h2>
-          {!isLoading && <span className='text-gray-400 cursor-pointer' onClick={() => setShowModal(false)}>X</span>}
-        </div>
-        <div className='flex flex-col gap-4 mt-4'>
-          <p> $ {productData.price} MXN</p>
-          <div className='flex flex-col gap-2'>
-            <CardElement options={cardStyle} />
-            {isLoading
-              ? <LoadingSpinner />
-              : (
-                <button onClick={handlePay} className='text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center'>
-                  Suscribirme
-                </button>)}
-          </div>
-        </div>
-      </div>
+      {isPaymentSucces
+        ? <Success />
+        : (
+          <div className='relative flex flex-col p-4 rounded w-96 bg-slate-100'>
+            <div className='flex justify-between'>
+              <h2 className='text-xl font-bold'> {productData.name} </h2>
+              {!isLoading && <span className='text-gray-400 cursor-pointer' onClick={() => setShowModal(false)}>X</span>}
+            </div>
+            <div className='flex flex-col gap-4 mt-4'>
+              <p> $ {productData.price} MXN</p>
+              <div className='flex flex-col gap-2'>
+                <CardElement options={cardStyle} />
+                {isLoading
+                  ? <LoadingSpinner />
+                  : (
+                    <button onClick={handlePay} className='text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center'>
+                      Suscribirme
+                    </button>)}
+              </div>
+            </div>
+          </div>)}
     </div>
   )
 }
