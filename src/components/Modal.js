@@ -1,8 +1,13 @@
+import { useState } from 'react'
+import Router from 'next/router'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useSession } from 'next-auth/react'
+import LoadingSpinner from './LoadingSpinner'
 
 function Modal ({ setShowModal, productData }) {
+  const [isLoading, setIsLoading] = useState(false)
   const handlePay = () => {
+    setIsLoading(true)
     fetch('/api/intent', {
       method: 'POST',
       headers: {
@@ -38,7 +43,8 @@ function Modal ({ setShowModal, productData }) {
       console.log(result.error.message)
     } else {
       if (result.paymentIntent.status === 'succeeded') {
-        console.log('Pago realizado')
+        Router.push('/dashboard')
+        setIsLoading(false)
       }
     }
   }
@@ -67,15 +73,18 @@ function Modal ({ setShowModal, productData }) {
       <div className='relative flex flex-col p-4 rounded w-96 bg-slate-100'>
         <div className='flex justify-between'>
           <h2 className='text-xl font-bold'> {productData.name} </h2>
-          <span className='text-gray-400 cursor-pointer' onClick={() => setShowModal(false)}>X</span>
+          {!isLoading && <span className='text-gray-400 cursor-pointer' onClick={() => setShowModal(false)}>X</span>}
         </div>
         <div className='flex flex-col gap-4 mt-4'>
           <p> $ {productData.price} MXN</p>
           <div className='flex flex-col gap-2'>
             <CardElement options={cardStyle} />
-            <button onClick={handlePay} className='text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center'>
-              Suscribirme
-            </button>
+            {isLoading
+              ? <LoadingSpinner />
+              : (
+                <button onClick={handlePay} className='text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center'>
+                  Suscribirme
+                </button>)}
           </div>
         </div>
       </div>
