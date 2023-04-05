@@ -1,5 +1,10 @@
+import { useSession } from 'next-auth/react'
+import Router from 'next/router'
+
 function ProductCard ({ name, price, psy, setShowModal, setProductData }) {
+  const { data: session } = useSession()
   const handlePay = () => {
+    if (!session) return Router.push('/api/auth/signin?')
     setProductData({
       name,
       price

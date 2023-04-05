@@ -44,7 +44,6 @@ function Modal ({ setShowModal, productData }) {
     } else {
       if (result.paymentIntent.status === 'succeeded') {
         Router.push('/dashboard')
-        setIsLoading(false)
       }
     }
   }
