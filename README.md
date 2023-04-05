@@ -2,13 +2,12 @@
 
 _Desarrollo fullstack con NextJS_
 
-## Comenzando 🚀
 ## Construido con 🛠️
 
 _Las tecnologías en este proyecto_
 
 * [Github](https://github.com/) - El repositorio con el control de versiones
-* [Vercel](https://vercel.com/) - Usado para deploy
+* [Vercel](https://vercel.com/) - Usado para deploy y hosting cloud
 * [Google Domain](https://domains.google.com/) - Para la configuración del subdominio dominio
 * [Github Actions](https://github.com/) - Usado para CI/CD
 * [NextJS](https://nextjs.org/) - El framework web usado
