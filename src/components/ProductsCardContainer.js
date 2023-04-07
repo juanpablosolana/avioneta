@@ -10,7 +10,7 @@ function ProductsCardContainer () {
   })
 
   return (
-    <div className='flex flex-row justify-center bg-white border border-gray-200 shadow bg sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
+    <div className='flex flex-col justify-center bg-white border border-gray-200 shadow sm:flex-row bg sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
       <ProductCard
         name='Copiloto'
         price='1,500'

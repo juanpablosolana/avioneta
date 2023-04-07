@@ -30,16 +30,13 @@ function Signout () {
               />
             </Link>
           </div>
-          <div className='flex-1 min-w-0'>
+          <div className='collapse lg:visible lg:flex-1 lg:min-w-0'>
             <p className='text-sm text-gray-500 truncate dark:text-gray-400'>
               {session?.user.name}
             </p>
             <p className='text-sm text-gray-500 truncate dark:text-gray-400'>
               {session?.user.email}
             </p>
-          </div>
-          <div className='inline-flex items-center text-base font-semibold text-gray-900 dark:text-white'>
-            $320
           </div>
           <Link href='/' onClick={() => signOut()}>
             Cerrar sesión

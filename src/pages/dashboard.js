@@ -12,16 +12,16 @@ export default function Profile ({ session }) {
       />
       <div className='bg-cover bg-center bg-[url("/images/man-using-laptop.jpg")] h-60'>
         <div className='p-20'>
-          <span className='text-4xl text-white'>Hola de nuevo, <p className='font-bold'>{session.user.name}</p></span>
+          <span className='text-xl text-white lg:text-4xl'>Hola de nuevo, <p className='font-bold'>{session.user.name}</p></span>
         </div>
         <div className='bg-sky-600'>
-          <div className='flex items-center justify-between py-2 mx-20 text-2xl font-bold text-white'>
-            <h2 className='mt-4 '> Tu semana en avioneta</h2>
-            <h2 className='font-normal'> Semana 1</h2>
+          <div className='flex items-center justify-around py-2 text-sm font-bold text-white lg:justify-between lg:mx-20 lg:text-2xl'>
+            <h2 className='mt-4'> Tu semana en avioneta</h2>
+            <h2 className='mt-4 lg:font-normal'> Semana 1</h2>
           </div>
         </div>
       </div>
-      <div className='flex flex-row justify-center h-auto py-20 mt-8 text-center'>
+      <div className='flex flex-col justify-center h-auto py-2 mt-8 text-center lg:py-20 lg:flex-row'>
         <div className='max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
           <a href='#'>
             <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>Noteworthy technology acquisitions 2021</h5>
@@ -53,7 +53,7 @@ export default function Profile ({ session }) {
           </a>
         </div>
       </div>
-      <div className='flex flex-row justify-center h-auto mt-8 text-center'>
+      <div className='flex flex-col justify-center h-auto mt-8 text-center lg:flex-row'>
         <div className='max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
           <a href='#'>
             <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>Noteworthy technology acquisitions 2021</h5>
