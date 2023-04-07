@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Footer from '@/components/Footer'
 import SEOHead from '@/components/SEOHead'
 import { getSession } from 'next-auth/react'
 
@@ -85,18 +85,7 @@ export default function Profile ({ session }) {
           </a>
         </div>
       </div>
-      <footer>
-        <div className='flex flex-col items-center justify-center w-full h-24 mt-8'>
-          <div className='flex items-center justify-center'>
-            <Image
-              src='/logo.svg'
-              alt='Avioneta'
-              width={300}
-              height={300}
-            />
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
